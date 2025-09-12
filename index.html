@@ -10,20 +10,24 @@
       <span id="fieldHeader">Temperature Converter</span>
       <span id="fieldTip">Enter the temperature, select units and submit</span>
       <input type="text" id="temperatureInput" placeholder="0.00">
-      
-      <select id="from">
-        <option value="" disabled selected hidden>From Unit</option>
-        <option value="Fah">Fahrenheit</option>
-        <option value="Cel">Celsius</option>
-        <option value="Kel">Kelvin</option>
-      </select>
 
-      <select id="to">
-        <option value="" disabled selected hidden>To Unit</option>
-        <option value="Fah">Fahrenheit</option>
-        <option value="Cel">Celsius</option>
-        <option value="Kel">Kelvin</option>
-      </select>
+      <div class="selectionWrapper">
+        <button id="from">From Unit</button>
+        <ul id="from_list" class="hidden">
+          <li value="Fah">Fahrenheit</li>
+          <li value="Cel">Celsius</li>
+          <li value="Kel">Kelvin</li>
+        </ul>
+      </div>
+
+      <div class="selectionWrapper">
+        <button id="to">To Unit</button>
+        <ul id="to_list" class="hidden">
+          <li value="Fah">Fahrenheit</li>
+          <li value="Cel">Celsius</li>
+          <li value="Kel">Kelvin</li>
+        </ul>
+      </div>
 
       <button id="convertButton" disabled>Convert</button>
 

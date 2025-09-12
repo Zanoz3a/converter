@@ -1,11 +1,14 @@
 const inputField = document.getElementById("temperatureInput");
-const fromSelect = document.getElementById("from");
-const toSelect = document.getElementById("to");
+const fromButton = document.getElementById("from");
+const toButton = document.getElementById("to");
+const fromList = document.getElementById("from_list");
+const toList = document.getElementById("to_list");
 const convertButton = document.getElementById("convertButton");
 const resultString = document.getElementById("resultString");
 
 const minWidth = 50;
 
+//Поле ввода проверка и расширение по ширине текста
 inputField.addEventListener("input", () => {
    const length = inputField.value.length || inputField.placeholder.length;
    inputField.style.width = Math.max(length * 10 + 20, minWidth) + "px";
@@ -13,9 +16,11 @@ inputField.addEventListener("input", () => {
 
 convertButton.style.transition = "all 0.3s ease";
 
+
+//Проверка на условия активации кнопки Convert + сама активация стилями
 function checkReady () {
   const inputValue = parseFloat(inputField.value);
-  convertButton.disabled = isNaN(inputValue) || !fromSelect.value || !toSelect.value;
+  convertButton.disabled = isNaN(inputValue) || !fromButton.value || !toButton.value;
 
   if (!convertButton.disabled) {
     convertButton.style.backgroundColor = "#000000";
@@ -28,6 +33,23 @@ function checkReady () {
     convertButton.style.cursor = "default";
   }
 }
+
+//Выбор из дропдауна
+function setupDrowdown (button, list) {
+  const items = list.querySelectorAll("li");
+
+  items.forEach(li => {
+    li.addEventListener("click", () => {
+      button.textContent = li.textContent;
+      button.value = li.getAttribute("value");
+
+      checkReady();
+    })
+  });
+}
+
+setupDrowdown(fromButton, fromList)
+setupDrowdown(toButton, toList)
 
 function convertTemperature (value, from, to) {
   let celsius;
@@ -42,16 +64,14 @@ function convertTemperature (value, from, to) {
 }
 
 inputField.addEventListener("input", checkReady);
-fromSelect.addEventListener("change", checkReady);
-toSelect.addEventListener("change", checkReady);
 
 convertButton.addEventListener("click", () => {
   const value = parseFloat(inputField.value);
-  const from = fromSelect.value;
-  const to = toSelect.value;
+  const from = fromButton.value;
+  const to = toButton.value;
 
-  const fromText = fromSelect.options[fromSelect.selectedIndex].text;
-  const toText = toSelect.options[toSelect.selectedIndex].text;
+  const fromText = fromButton.textContent;
+  const toText = toButton.textContent;
 
   const result = convertTemperature(value, from, to);
   resultString.textContent = `${inputField.value}
