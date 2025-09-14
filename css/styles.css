@@ -1,0 +1,259 @@
+body {
+  font-family: Calibri;
+  background-color: #F2F2F2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+}
+
+.temperatureConverterField {
+  border: #141414 solid;
+  border-radius: 13px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  padding: 30px 40px;
+  margin-top: 50px;
+  width: 500px;
+  cursor: default;
+}
+
+#temperatureFieldHeader {
+  display: block;
+  font-size: 35px;
+  font-weight: bold;
+  color: #000000;
+  margin-bottom: 10px;
+}
+
+#temperatureFieldTip {
+  display: block;
+  font-size: 20px;
+  color: #3B3B3B;
+  margin-bottom: 10px;
+}
+
+input, #temperatureConvertButton {
+  display: inline-block;
+  box-sizing: border-box;
+  height: 40px;
+  padding: 0 10px;
+  border-radius: 10px;
+  margin-left: 5px;
+  border: 2px solid #ADADAD;
+  text-align: center;
+}
+
+.temperatureSelectionWrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.temperatureSelectionWrapper button {
+  margin: 0;
+  width: 110px;
+  height: 40px;
+  padding: 0 10px;
+  border: 2px solid #ADADAD;
+  border-radius: 10px;
+  background-color: #fff;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.temperatureSelectionWrapper ul {
+  display: none;
+  position: absolute;
+  z-index: 100;
+  padding: 4px;
+  box-sizing: border-box;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border: 2px solid #333232;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.temperatureSelectionWrapper ul li {
+  cursor: pointer;
+  padding: 8px 12px;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.temperatureSelectionWrapper:hover ul {
+  display: block;
+}
+
+.temperatureSelectionWrapper ul li:hover {
+  background: #f0f0f0;
+  border-radius: 0;
+}
+
+.temperatureSelectionWrapper ul li:first-child:hover {
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
+
+.temperatureSelectionWrapper ul li:last-child:hover {
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+}
+
+
+input {
+  width: 60px;
+  transition: all 0.2s;
+}
+
+input:hover, .lengthSelectionWrapper button:hover, .temperatureSelectionWrapper button:hover {
+  border: 2px solid;
+}
+
+.hidden {display: none;}
+
+#temperatureConvertButton {
+  background-color: #E6E6E6;
+  border: thin solid #ADADAD;
+  box-shadow: none;
+  cursor: default;
+}
+
+#temperatureResultString {
+  display: block;
+  margin-top: 15px;
+  color: #16A600;
+  font-weight: 500;
+  font-size: 19px;
+}
+
+
+
+
+
+.lengthConverterField {
+  border: #141414 solid;
+  border-radius: 13px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  padding: 30px 40px;
+  margin-top: 50px;
+  width: 700px;
+  cursor: default;
+}
+
+#lengthFieldHeader {
+  display: block;
+  font-size: 35px;
+  font-weight: bold;
+  color: #000000;
+  margin-bottom: 10px;
+}
+
+#lengthFieldTip {
+  display: block;
+  font-size: 20px;
+  color: #3B3B3B;
+  margin-bottom: 10px;
+}
+
+#lengthConvertButton {
+  display: inline-block;
+  box-sizing: border-box;
+  height: 40px;
+  padding: 0 10px;
+  border-radius: 10px;
+  margin-left: 5px;
+  border: 2px solid #ADADAD;
+  text-align: center;
+}
+
+.lengthSelectionWrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.lengthSelectionWrapper button {
+  margin: 0;
+  width: 110px;
+  height: 40px;
+  padding: 0 10px;
+  border: 2px solid #ADADAD;
+  border-radius: 10px;
+  background-color: #fff;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.lengthSelectionWrapper ul {
+  display: none;
+  position: absolute;
+  z-index: 100;
+  padding: 4px;
+  box-sizing: border-box;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border: 2px solid #333232;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.lengthSelectionWrapper ul li {
+  cursor: pointer;
+  padding: 8px 12px;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.lengthSelectionWrapper:not(.exactlyNotThatOneButtonWhatReallyNeedToDisplayListByHoverOnThat):hover ul {
+  display: block;
+}
+
+.lengthSelectionWrapper ul li:hover {
+  background: #f0f0f0;
+  border-radius: 0;
+}
+
+.lengthSelectionWrapper ul li:first-child:hover {
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
+
+.lengthSelectionWrapper ul li:last-child:hover {
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+}
+
+#toLengthUnitButton {
+  background-color: #E6E6E6;
+  color: #7D7D7D;
+  border: thin solid #ADADAD;
+  cursor: default;
+
+}
+
+#lengthConvertButton {
+  background-color: #E6E6E6;
+  border: thin solid #ADADAD;
+  box-shadow: none;
+  cursor: default;
+}
+
+#lengthResultString {
+  display: block;
+  margin-top: 15px;
+  color: #16A600;
+  font-weight: 500;
+  font-size: 19px;
+}

@@ -3,37 +3,92 @@
   <head>
     <meta charset="utf-8">
     <title>Temperature Converter</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/styles.css">
   </head>
   <body>
-    <div class="converterField">
-      <span id="fieldHeader">Temperature Converter</span>
-      <span id="fieldTip">Enter the temperature, select units and submit</span>
+    <div class="temperatureConverterField">
+      <span id="temperatureFieldHeader">Temperature Converter</span>
+      <span id="temperatureFieldTip">Enter the temperature, select units and submit</span>
       <input type="text" id="temperatureInput" placeholder="0.00">
 
-      <div class="selectionWrapper">
-        <button id="from">From Unit</button>
-        <ul id="from_list" class="hidden">
+      <div class="temperatureSelectionWrapper">
+        <button id="fromTemperatureButton">From Unit</button>
+        <ul id="fromTemperatureList">
           <li value="Fah">Fahrenheit</li>
           <li value="Cel">Celsius</li>
           <li value="Kel">Kelvin</li>
         </ul>
       </div>
 
-      <div class="selectionWrapper">
-        <button id="to">To Unit</button>
-        <ul id="to_list" class="hidden">
+      <div class="temperatureSelectionWrapper">
+        <button id="toTemperatureButton">To Unit</button>
+        <ul id="toTemperatureList">
           <li value="Fah">Fahrenheit</li>
           <li value="Cel">Celsius</li>
           <li value="Kel">Kelvin</li>
         </ul>
       </div>
 
-      <button id="convertButton" disabled>Convert</button>
-
-      <span id="resultString"></span>
+      <button id="temperatureConvertButton" disabled>Convert</button>
+      <span id="temperatureResultString"></span>
     </div>
 
-    <script src="script.js"></script>
+    <div class="lengthConverterField">
+      <span id="lengthFieldHeader">Measurements Converter</span>
+      <span id="lengthFieldTip">Enter source value, source
+        and target prefixes and submit</span>
+
+      <input type="text" id="sourceLengthValueInput" placeholder="0">
+
+      <div class="lengthSelectionWrapper">
+        <button id="fromLengthPrefixButton">Choose prefix</button>
+        <ul id="fromLengthPrefixList">
+          <li value="micro">micro</li>
+          <li value="milli">milli</li>
+          <li value="santi">santi</li>
+          <li value="deci">deci</li>
+          <li value="kilo">kilo</li>
+        </ul>
+      </div>
+
+      <div class="lengthSelectionWrapper">
+        <button id="fromLengthUnitButton">From Unit</button>
+        <ul id="fromLengthUnitList">
+          <li value="Met">meters</li>
+          <li value="Met2">meters²</li>
+          <li value="Met3">meters³</li>
+        </ul>
+      </div>
+
+      <span class="toValueWord">to</span>
+
+      <div class="lengthSelectionWrapper">
+        <button id="toLengthPrefixButton">Choose prefix</button>
+        <ul id="toLengthPrefixList">
+          <li value="micro">micro</li>
+          <li value="milli">milli</li>
+          <li value="santi">santi</li>
+          <li value="deci">deci</li>
+          <li value="kilo">kilo</li>
+        </ul>
+      </div>
+
+      <div class="lengthSelectionWrapper exactlyNotThatOneButtonWhatReallyNeedToDisplayListByHoverOnThat">
+        <button id="toLengthUnitButton">To Unit</button>
+        <ul id="toLengthUnitList">
+          <li value="Met">meters</li>
+          <li value="Met2">meters²</li>
+          <li value="Met3">meters³</li>
+        </ul>
+      </div>
+
+      <button id="lengthConvertButton" disabled>Convert</button>
+      <span id="lengthResultString"></span>
+    </div>
+
+    <script src="js/general_logic.js"></script>
+    <script src="js/lengths.js"></script>
+    <script src="js/temperature.js"></script>
+
   </body>
 </html>
