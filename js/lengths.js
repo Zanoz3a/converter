@@ -40,19 +40,62 @@ setupDrowdown(toLengthPrefixButton, toLengthPrefixList, checkLengthReady);
 setupDrowdown(fromLengthUnitButton, fromLengthUnitList, checkLengthReady);
 sourceLengthInputField.addEventListener("input", checkLengthReady);
 
+//Префиксы
+const prefixPowers = {
+  "micro": { power: -6, name: "Micrometers" },
+  "milli": { power: -3, name: "Millimeters" },
+  "santi": { power: -2, name: "Centimeters" },
+  "deci":  { power: -1, name: "Decimeters" },
+  "kilo":  { power:  3, name: "Kilometers" }
+};
+//Получение степеней
+function getUnitInfo(unitValue) {
+  if (unitValue === "Met")  return { power: 1, name: "Meters" };
+  if (unitValue === "Met2") return { power: 2, name: "Square meters" };
+  if (unitValue === "Met3") return { power: 3, name: "Cubic meters" };
+  return { power: 1, name: "Meters" };
+}
 
-// function checkMeasurementsReady () {
-//
-// }
+//Формат вывода
+function formatNumber(num) {
+  if (Math.abs(num) >= 1e6 || Math.abs(num) < 1e-3) {
+    const exp = num.toExponential(2);
+    const [coeff, power] = exp.split("e");
+    return `${coeff}·10^${parseInt(power, 10)}`;
+  }
+  return num.toFixed(3).replace(/\.?0+$/, "");
+}
 
-// setupDrowdown(, , checkPowerReady);
 
+function convertMeasurements(value, fromPrefix, fromUnit, toPrefix, toUnit) {
+  const fromPrefixPower = prefixPowers[fromPrefix]?.power || 0;
+  const toPrefixPower = prefixPowers[toPrefix]?.power || 0;
 
-//Логика вычислений
+  const fromUnitInfo = getUnitInfo(fromUnit);
+  const valueInBase = value * Math.pow(10, fromPrefixPower * fromUnitInfo.power);
+  const convertedValue = valueInBase / Math.pow(10, toPrefixPower * fromUnitInfo.power);
 
-// function convertMeasurements(value, from, to, unit) {
-//
-// }
+  return convertedValue;
+}
+
+//Подключаем к кнопке
+lengthConvertButton.addEventListener("click", () => {
+  const value = parseFloat(sourceLengthInputField.value);
+  const fromPrefix = fromLengthPrefixButton.value;
+  const fromUnit = fromLengthUnitButton.value;
+  const toPrefix = toLengthPrefixButton.value;
+  const toUnit = toLengthUnitButton.value;
+
+  const result = convertMeasurements(value, fromPrefix, fromUnit, toPrefix, toUnit);
+
+  const fromUnitInfo = getUnitInfo(fromUnit);
+  const toUnitInfo = getUnitInfo(toUnit);
+
+  const fromName = prefixPowers[fromPrefix]?.name || fromUnitInfo.name;
+  const toName = prefixPowers[toPrefix]?.name || toUnitInfo.name;
+
+  lengthResultString.textContent = `${value} ${fromName} is ${formatNumber(result)} ${toName}`;
+});
 
 
 
